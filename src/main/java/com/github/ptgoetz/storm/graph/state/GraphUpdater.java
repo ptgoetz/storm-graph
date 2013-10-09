@@ -1,12 +1,11 @@
 package com.github.ptgoetz.storm.graph.state;
 
-import java.util.List;
-
-import com.tinkerpop.blueprints.Graph;
-
 import storm.trident.operation.TridentCollector;
 import storm.trident.state.BaseStateUpdater;
 import storm.trident.tuple.TridentTuple;
+
+import java.util.List;
+
 
 public class GraphUpdater extends BaseStateUpdater<GraphState> {
 
@@ -15,7 +14,9 @@ public class GraphUpdater extends BaseStateUpdater<GraphState> {
     public GraphUpdater(GraphTupleProcessor processor){
         this.processor = processor;
     }
-    
+
+
+    @Override
     public void updateState(GraphState state, List<TridentTuple> tuples, TridentCollector collector) {
         state.update(tuples, collector, this.processor);
     }

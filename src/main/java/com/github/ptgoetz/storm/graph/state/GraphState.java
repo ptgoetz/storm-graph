@@ -9,6 +9,14 @@ import storm.trident.operation.TridentCollector;
 import storm.trident.state.State;
 import storm.trident.tuple.TridentTuple;
 
+/**
+ * Trident <code>State</code> implementation that modifies a <code>Graph</code> database.
+ * <p/>
+ * If the underlying <code>Graph</code> implementation supports transactions, the
+ * the <code>TransactionalGraph.commit()</code> method will be called when a
+ * batch partition has sucsessfully been processed.
+ *
+ */
 public class GraphState implements State {
     
     private Graph graph;
